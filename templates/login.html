@@ -1,0 +1,88 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+ <title>Login/Register</title>
+  <!-- swiper cdn  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- fontawesome cdn  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href='{% static "logincss/styles.css" %}'>
+
+</head>
+
+<body>
+  <section>
+    <div class="container">
+      <div class="form-container" id="login-form">
+        <div class="top">
+          <img src='{% static "/images/premium-jewelry-gemstone-template-with-diamond-logo-design_1017-44565.jpg" %}' alt="Logo">
+        </div>
+        <div class="loginwith">
+          <ul>
+            <li class="google-li"><i class="fa-brands fa-google"></i></li>
+            <li class="facebook-li"><i class="fa-brands fa-facebook"></i></li>
+            <li class="x-li"><i class="fa-brands fa-x-twitter"></i></li>
+          </ul>
+        </div>
+        <form>
+          <div class="row">
+            <input type="text" required placeholder="E-mail Address">
+          </div>
+          <div class="row">
+            <input type="password" required placeholder="Password">
+          </div>
+          <button class="button-40">Login</button>
+        </form>
+        <p class="signup-link-p"><a href="#"id="signup-link">Don't Have An Account? Sign Up</a></p>
+      </div>
+      <!-- signup section  -->
+      <div class="form-container" id="signup-form" style="display: none;">
+        <h1>Sign Up</h1>
+        <div class="loginwith">
+          <ul>
+            <li class="google-li"><i class="fa-brands fa-google"></i></li>
+            <li class="facebook-li"><i class="fa-brands fa-facebook"></i></li>
+            <li class="x-li"><i class="fa-brands fa-x-twitter"></i></li>
+          </ul>
+        </div>
+        <form>
+          <label for="email">E-mail</label>
+          <input type="text" required id="email" name="email">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+          <label for="confirm">Confirm Password</label>
+          <input type="password" name="confirm" id="confirm" required>
+          <button class="button-40">Sign Up</button>
+        </form>
+        <p class="loginlink-p"><a href="#" id="login-link">Already Have An Account? Login.</a></p>
+        <p class="loginlink-p"><a href="{% url 'index' %}">Go To Home</a></p>
+      </div>
+    </div>
+
+    <!-- background Slider Section   -->
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src='{% static "/images/model-demonstrating-earrings-ring.jpg" %}'alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src='{% static "/images/pexels-motional-studio-1081685.jpg" %}' alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src='{% static "/images/slider-bg.jpg" %}'alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src='{% static "loginjs/script.js" %}'></script>
+
+</body>
+
+</html>
