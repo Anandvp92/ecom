@@ -52,8 +52,18 @@
           <div class="row">            
             <input type="password" required placeholder="Password" name="password">
           </div>
-          <button class="button-40">Login</button>
+          <button class="button-40" >Login</button>
+         
         </form>
+        {% if error_message %}
+        <script>
+        function loginfail(){
+          return alert("Username of password is wrong");
+          }
+          loginfail()
+        </script>
+        <p class="error-message" style="color: red;font-size: x-small;">{{ error_message }}</p>
+        {% endif %}
         <p class="signup-link-p"><a href="#"id="signup-link">Don't Have An Account? Sign Up</a></p>
       </div>
       <!-- signup section  -->
@@ -63,17 +73,29 @@
         </div>
         <div class="loginwith">
           <ul>
-            <li class="google-li"><i class="fa-brands fa-google"></i></li>
-            <li class="facebook-li"><i class="fa-brands fa-facebook"></i></li>
-            <li class="x-li"><i class="fa-brands fa-x-twitter"></i></li>
+            <li class="google-li">
+              <a href="https://www.google.com">
+              <i class="fa-brands fa-google"></i>
+              </a>
+            </li>
+            <li class="facebook-li">
+              <a href="https://www.google.com">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            </li>
+            <li class="x-li">
+              <a href="https://www.google.com">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            </li>
           </ul>
         </div>
         <form method="post" enctype="multipart/form-data"  action="{% url 'register' %}">
           {%csrf_token%}
           <label for="email">Username</label>
-          <input type="text" required id="username" name="username">
+          <input type="text" required id="username" name="username" required>
           <label for="email">E-mail</label>
-          <input type="text" required id="email" name="email">
+          <input type="text" required id="email" name="email" required>
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required>
           <button class="button-40">Sign Up</button>
