@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{%block title%}Home{%endblock%}
+
+{%block content %}
+{%load static%}
+<div class="container">
+    <div class="form-container" id="login-form">
+      <div class="top">
+        <img src='{% static "/images/premium-jewelry-gemstone-template-with-diamond-logo-design_1017-44565.jpg" %}' alt="Logo">
+      </div>
+      <div class="loginwith">
+        <ul>
+          <li class="google-li">
+            <a href="https://www.google.com">
+            <i class="fa-brands fa-google"></i>
+            </a>
+          </li>
+          <li class="facebook-li">
+            <a href="https://www.google.com">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          </li>
+          <li class="x-li">
+            <a href="https://www.google.com">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          </li>
+        </ul>
+      </div>
+<!-- signup section  -->
+<div class="form-container" id="signup-form" style="display: none;">
+    <div class="top" style="height: auto; width:auto">
+      <img src='{% static "/images/premium-jewelry-gemstone-template-with-diamond-logo-design_1017-44565.jpg" %}' alt="Logo">
+    </div>
+    <div class="loginwith">
+      <ul>
+        <li class="google-li"><i class="fa-brands fa-google"></i></li>
+        <li class="facebook-li"><i class="fa-brands fa-facebook"></i></li>
+        <li class="x-li"><i class="fa-brands fa-x-twitter"></i></li>
+      </ul>
+    </div>
+    <form  method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+      <label for="email">Username</label>
+      <input type="text" required id="username" name="reg-username">
+      <label for="email">E-mail</label>
+      <input type="text" name="reg-email">
+      <label for="password">Password</label>
+      <input type="password" name="reg-password" required>
+      <button class="button-40">Sign Up</button>
+    </form>
+    <p class="loginlink-p"><a href="#" id="login-link">Already Have An Account? Login.</a></p>
+    <p class="loginlink-p"><a href="{% url 'index' %}">Go To Home</a></p>
+  </div>
+</div>
+
+<!-- background Slider Section   -->
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src='{% static "/images/model-demonstrating-earrings-ring.jpg" %}'alt="">
+    </div>
+    <div class="swiper-slide">
+      <img src='{% static "/images/pexels-motional-studio-1081685.jpg" %}' alt="">
+    </div>
+    <div class="swiper-slide">
+      <img src='{% static "/images/slider-bg.jpg" %}'alt="">
+    </div>
+  </div>
+</div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src='{% static "loginjs/script.js" %}'></script>
+
+
+{%endblock%}

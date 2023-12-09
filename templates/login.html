@@ -42,12 +42,15 @@
             </li>
           </ul>
         </div>
-        <form>
-          <div class="row">
-            <input type="text" required placeholder="E-mail Address">
+        <form method="post" enctype="multipart/form-data"  action="{% url 'login' %}">
+          {%csrf_token%}
+          <label for="email">Username</label>
+          <div class="row">            
+            <input type="text" required placeholder="User-Name" name="username">
           </div>
-          <div class="row">
-            <input type="password" required placeholder="Password">
+          <label for="email">Password</label>
+          <div class="row">            
+            <input type="password" required placeholder="Password" name="password">
           </div>
           <button class="button-40">Login</button>
         </form>
@@ -65,13 +68,14 @@
             <li class="x-li"><i class="fa-brands fa-x-twitter"></i></li>
           </ul>
         </div>
-        <form>
+        <form method="post" enctype="multipart/form-data"  action="{% url 'register' %}">
+          {%csrf_token%}
+          <label for="email">Username</label>
+          <input type="text" required id="username" name="username">
           <label for="email">E-mail</label>
           <input type="text" required id="email" name="email">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required>
-          <label for="confirm">Confirm Password</label>
-          <input type="password" name="confirm" id="confirm" required>
           <button class="button-40">Sign Up</button>
         </form>
         <p class="loginlink-p"><a href="#" id="login-link">Already Have An Account? Login.</a></p>
