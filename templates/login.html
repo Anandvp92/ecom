@@ -56,15 +56,10 @@
          
         </form>
         {% if error_message %}
-        <script>
-        function loginfail(){
-          return alert("Username of password is wrong");
-          }
-          loginfail()
-        </script>
         <p class="error-message" style="color: red;font-size: x-small;">{{ error_message }}</p>
         {% endif %}
         <p class="signup-link-p"><a href="#"id="signup-link">Don't Have An Account? Sign Up</a></p>
+        <p class="loginlink-p"><a href="{% url 'index' %}">Go To Home</a></p>
       </div>
       <!-- signup section  -->
       <div class="form-container" id="signup-form" style="display: none;">

@@ -11,30 +11,27 @@ def userlogin(request):
         username=request.POST['username']
         password=request.POST['password']
         user=authenticate(username=username,password=password)    
-        print(user)
         if user:
             li(request,user)
-            
             return redirect("index")
         if user is None:
-            return render(request,"login.html",context={'error_message':"Username Or Password Is Wrong!"})                      
+            return render(request,"login.html",context={'error_message':"Username Or Password Is Wrong !"})                      
     return render(request,"login.html")
 
 def register(request):
     if request.POST:
+        username=None
         username=request.POST['username']      
         email=request.POST['email']
         password=request.POST['password']
-        try:
-            if username and email and password:
-                User.objects.create_user(username=username,password=password,email=email)
-                return redirect("index")
-        except Exception as e:
-            print(e)
+     
+        if username and email and password:
+            user= User.objects.create_user(username=username,password=password,email=email)
+            return redirect("login")        
             
     return render(request,"login.html")
 
 
 def logout(request):
     lo(request)
-    return redirect("login")
+    return redirect("index")

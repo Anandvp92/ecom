@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Your Cart - JS Jewellery{% endblock %}
+{% block content %}
+<section class="shop_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                Cart Products
+            </h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="box">
+                    <a href="#">
+                        <div class="img-box">
+                            <img src="{% static 'images/p1.png' %}" alt="Product Image">
+                        </div>
+                        <div class="quantity">
+                            <h6>
+                                Necklace
+                            </h6>
+                            <h6>
+                                Price: <span>$200</span>
+                            </h6>
+                            <div class="item-actions">
+                                <button class="increment">+</button>
+                                <span class="quantity">1</span>
+                                <button class="decrement">-</button>
+                                <button class="remove">Remove</button>
+                            </div>
+                        </div>
+                       
+                    </a>
+                </div>
+            </div>
+            <!-- Repeat the above structure for each item in the cart -->
+        </div>
+    </div>
+</section>
+<style>
+    .layout_padding {
+        /* Add any specific styling for the centered layout if needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .box {
+        /* Add any specific styling for the cart item box if needed */
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .item-actions button {
+        /* Add styling for the increment, decrement, and remove buttons */
+        margin: 5px;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        background-color: #eee;
+    }
+
+
+    .shop_section .box .img-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 15px 30px;
+    height: 170px;
+    }
+</style>
+{% endblock %}
