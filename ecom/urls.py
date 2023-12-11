@@ -25,4 +25,9 @@ urlpatterns = [
     path('user/', include('usermanagement.urls')), #usermanagement
     path('shop/', include('shop.urls')), #usermanagement
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

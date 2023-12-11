@@ -985,22 +985,6 @@ a:focus {
   transform: scale(1.2); /* Scale the star on hover */
 }
 
-.container{
-  text-align: center;
-}
 
 
 
-/* Your existing CSS styles */
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.welcome-message {
-  color: #fdfdfd;
-  font-size: x-large;
-  /* Add any additional styles you want for the welcome message */
-  margin-left: auto; /* Pushes the welcome message to the right */
-}
