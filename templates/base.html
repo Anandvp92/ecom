@@ -39,8 +39,12 @@
             <img src='{% static "/images/premium-jewelry-gemstone-template-with-diamond-logo-design_1017-44565.jpg" %}' style="width: 50px; border: 2px  solid rgb(252, 230, 39); border-radius: 11px; height: auto;" alt="Your Logo">
           </a>
         </a>
-        <div class="" id="">
-
+        <div class="" id="" >
+          {% if user.is_authenticated %}
+          <div id="welcome-container" >
+            <span>Welcome: {{ user.username |upper }}</span>
+          </div>
+          {% endif %}
           <div class="custom_menu-btn">
             <button onclick="openNav()">
               <span class="s-1"> </span>
@@ -48,16 +52,14 @@
               <span class="s-3"> </span>
             </button>
             <div id="myNav" class="overlay">
-              <div class="overlay-content">
-                {% if user.is_authenticated %}
-                <span style="color: #fcee29; font-size: x-large;">Welcome: {{ user.username |upper }}</span>
-                {% endif %}
+              <div class="overlay-content">             
                 <a href="{% url 'index' %}" >Home</a>
-                <a href="{% url 'about' %}">About</a>             
+                <a href="{% url 'about' %}">About</a>  
+                <a href="{% url 'shop' %}">Products</a> 
+                <a href="{% url 'blog' %}">Blog</a>          
                 {% if user.is_authenticated %}               
-                <a href="{% url 'shop' %}">Shop</a>
-                <a href="{% url 'cart' %}">Cart</a>
-                <a href="{% url 'blog' %}">Blog</a>
+                <a href="{% url 'create' %}">Vendor</a>
+                <a href="{% url 'cart' %}">Cart</a>              
                 <a href="{% url 'logout' %}" id="logout-link">Logout</a>               
                 {% else %}
                 <a href="{% url 'login' %}" id="login-link">Login/Register</a>
@@ -117,11 +119,8 @@
             <div class="info_links_menu">
               <a href="{% url 'index' %}">Home</a>
               <a href="{% url 'about' %}">About</a>
-              {% if user.is_authenticated %} 
-              <a href="{% url 'shop' %}">Shop</a>
-              <a href="{% url 'blog' %}">Blog</a>
-              {%endif%}
-              
+              <a href="{% url 'shop' %}">Products</a>
+              <a href="{% url 'blog' %}">Blog</a>                
             </div>
           </div>
         </div>

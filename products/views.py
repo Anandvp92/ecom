@@ -11,7 +11,7 @@ def indexpage(request):
 def about(request):
     return render(request,"about.html")
 
-@login_required(login_url="login")
+#@login_required(login_url="login")
 def shop(request):
     return render(request,"shop.html")
 

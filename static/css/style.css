@@ -964,3 +964,43 @@ a:focus {
   color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
+
+
+
+
+/* Styles for the stars */
+.rating {
+  font-size: 0; /* Remove white space between inline-block elements */
+}
+.star {
+  display: inline-block;
+  font-size: 30px; /* Size of the stars */
+  cursor: pointer;
+  color: #ccc; /* Default color of the stars */
+  transition: transform 0.2s ease-in-out; /* Transition for hover effect */
+}
+.star:hover,
+.star.active {
+  color: gold; /* Color of the active (selected) stars */
+  transform: scale(1.2); /* Scale the star on hover */
+}
+
+.container{
+  text-align: center;
+}
+
+
+
+/* Your existing CSS styles */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome-message {
+  color: #fdfdfd;
+  font-size: x-large;
+  /* Add any additional styles you want for the welcome message */
+  margin-left: auto; /* Pushes the welcome message to the right */
+}

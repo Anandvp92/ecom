@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
-    'usermanagement'
+    'usermanagement',
+    'shop',
 ]
 
 MIDDLEWARE = [
@@ -125,7 +126,14 @@ STATICFILES_DIRS = [
     #'/var/www/static/',
 ]
 
+
+MEDIA_ROOT = BASE_DIR / 'product_images'
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
