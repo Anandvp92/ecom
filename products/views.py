@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from shop.models import productmodel
 
 
 # Create your views here.
@@ -13,7 +14,8 @@ def about(request):
 
 #@login_required(login_url="login")
 def shop(request):
-    return render(request,"shop.html")
+    product=productmodel.objects.all()[:4]
+    return render(request,"shop.html",context={"products":product})
 
 
 

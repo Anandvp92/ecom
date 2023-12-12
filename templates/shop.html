@@ -14,24 +14,26 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
+        {%for product in products%}
+        <div class="col-sm-6 col-md-4 col-lg-3">    
+            <div class="box">
             <a href="">
               <div class="img-box">
-                <img src='{% static "images/p1.png" %}' alt="">
+                <img src= "{{product.IMAGE.url}}" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Necklace
+                  {{product.TITLE}}
                 </h6>
-                <h6>
+                <h6 ><br>
                   Price
                   <span>
-                    $200
+                  ${{product.PRICE}}
                   </span>                  
                 </h6>
-                
+            
               </div>
+             
                <!-- star -->
               <div class="container">
                 <div class="rating" data-rating="0">
@@ -53,7 +55,7 @@
           </div>
         </div>
         
-      
+        {%endfor%}
       <div class="btn-box">
         <a href="">
           View All Products
