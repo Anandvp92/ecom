@@ -17,10 +17,14 @@ def createproduct(request):
     return render(request,"create.html",context={"form":productform})
 
 
-def editproduct(request):
+def listproduct(request):
     products= productmodel.objects.all()
-    return render(request,"edit.html",{"products":products})
+    return render(request,"productlist.html",{"products":products})
 
 
 def deleteproduct(request):
     return render(request,"delete.html")
+
+
+def editproduct(request):
+    return render(request,"edit.html")

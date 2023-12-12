@@ -1,0 +1,76 @@
+{%extends 'footer.html'%}
+{%block content%}
+<style>
+.body{
+    font-family: Arial, sans-serif; 
+    margin: 0; padding: 0; 
+    background-color: #f4f4f4;
+}
+.div{
+    width: 80%; 
+    margin: 20px auto;
+    padding-bottom: 400px;
+}
+.head{
+    text-align: center;
+     margin-bottom: 20px; 
+     color: #333;
+}
+.tablehead{
+    border: 1px solid #ddd;
+     padding: 8px; 
+     background-color: #f2f2f2;
+}
+.td{
+    border: 1px solid #ddd;
+     padding: 8px;
+}
+.button{
+    padding: 6px 12px; 
+    cursor: pointer;
+    border: none; 
+    border-radius: 4px; 
+    background-color: #428bca;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+</style>
+<body class="body">
+<div class="div">
+  <h2 class="head" >Product List</h2>
+  <table style="width: 100%; border-collapse: collapse; text-align: center;">
+    <thead>
+      <tr>
+        <th class="tablehead">Product Id</th>
+        <th class="tablehead">Title</th>
+        <th class="tablehead">Price</th>
+        <th class="tablehead">PRODUCT CATEGORY</th>
+        <th class="tablehead">PRODUCT IMAGE</th>
+        <th class="tablehead">Edit</th>
+        <th class="tablehead">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for product in products%}
+      <tr>
+        <td class="td">{{product.id}}</td>        
+        <td class="td">{{product.TITLE}}</td>
+        <td class="td">₹{{product.PRICE}}</td>
+        <td class="td">{{product.PRODUCT_CATEGORY}}</td>
+        <td class="td"><img src="{{ product.IMAGE.url }}"  alt="Product Image"  width="150px"></td>
+
+        <td class="td">
+          <button class="button" >Edit</button>
+        </td>
+        <td class="td">
+          <button class="button">Delete</button>
+        </td>
+      </tr>
+      {%endfor%}
+      <!-- Add more rows as needed -->
+    </tbody>
+  </table>
+</div>
+
+{%endblock%}
