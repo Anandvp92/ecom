@@ -43,12 +43,7 @@
           </a>
          
         </a>
-        <div class="container">
-          <div style="text-align: center;color:rgb(60, 110, 49)">
-          {% if user.is_authenticated %}       
-        Welcome: {{ user.username | upper }}        
-          {% endif %}
-        </div>
+        <div class="container">      
           <div class="custom_menu-btn">         
             <button onclick="openNav()">
               <span class="s-1"> </span>
@@ -56,9 +51,15 @@
               <span class="s-3"> </span>
             </button>
            
-             
+           
             <div id="myNav" class="overlay">
-              <div class="overlay-content">             
+              <div class="overlay-content">  
+                {% if user.is_authenticated %} 
+                <a style="color: rgb(255, 255, 83);">
+                user : {{ user.username | upper }}  
+                </a>      
+                
+                    {% endif %}           
                 <a href="{% url 'index' %}" >Home</a>
                 <a href="{% url 'about' %}">About</a>  
                 <a href="{% url 'shop' %}">Products</a> 

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import productform
 from django.http import HttpResponse
+from .models import productmodel
 
 # Create your views here.
 
@@ -17,7 +18,8 @@ def createproduct(request):
 
 
 def editproduct(request):
-    return render(request,"edit.html")
+    products= productmodel.objects.all()
+    return render(request,"edit.html",{"products":products})
 
 
 def deleteproduct(request):
