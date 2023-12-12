@@ -7,7 +7,7 @@ body {
 .kgacontainer {
     position: relative;
     min-height: 100vh;
-    background-color: #d59038;
+    background-color: #d538c4b2;
     overflow: hidden;
     display: grid;
     place-items: center;
