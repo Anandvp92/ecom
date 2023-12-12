@@ -41,23 +41,38 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
+        {%for product in products%}
+        <div class="col-sm-6 col-md-4 col-lg-3">    
+            <div class="box">
             <a href="">
               <div class="img-box">
-                <img src='{% static "/images/p1.png" %} 'alt="">
+                <img src= "{{product.IMAGE.url}}" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Necklace
+                  {{product.TITLE}}
                 </h6>
-                <h6>
+                <h6 ><br>
                   Price
-                  <span>
-                    $200
-                  </span>
+                  <span><br>
+                  ${{product.PRICE}}
+                  </span>                  
                 </h6>
+            
               </div>
+             
+               <!-- star -->
+              <div class="container">
+                <div class="rating" data-rating="0">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <p>Current Rating: <span id="currentRating">0</span> stars</p>
+            </div>
+              <!-- end star -->
               <div class="new">
                 <span>
                   New
@@ -66,81 +81,8 @@
             </a>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src='{% static "images/p2.png" %}' alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Necklace
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $300
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src='{% static "images/p3.png" %}' alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Necklace
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $110
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src='{% static "images/p4.png" %}' alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Ring
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $45
-                  </span>
-                </h6>
-              </div>  
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>           
-            </a>
-          </div>
-        </div>
+        
+        {%endfor%}
       </div>
       <div class="btn-box">
         <a href="">

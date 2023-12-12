@@ -6,15 +6,16 @@ from shop.models import productmodel
 # Create your views here.
 
 def indexpage(request):
-    return render(request,"index.html" ,context={"user":request.user})
+    product=productmodel.objects.all()[:4]
+    return render(request,"index.html" ,context={"user":request.user,"products":product})
 
 
 def about(request):
     return render(request,"about.html")
 
-#@login_required(login_url="login")
+@login_required(login_url="login")
 def shop(request):
-    product=productmodel.objects.all()[:4]
+    product=productmodel.objects.all()
     return render(request,"shop.html",context={"products":product})
 
 
