@@ -43,15 +43,13 @@
           </a>
          
         </a>
-        <div class="container"  style="color: rgb(255, 255, 255); background-color:#3a3a3a;width :180px; height:auto ;border-radius:10px">
+        <div class="container">
+          <div style="text-align: center;color:rgb(60, 110, 49)">
           {% if user.is_authenticated %}       
         Welcome: {{ user.username | upper }}        
           {% endif %}
         </div>
-          <div class="custom_menu-btn">
-            
-          
-      
+          <div class="custom_menu-btn">         
             <button onclick="openNav()">
               <span class="s-1"> </span>
               <span class="s-2"> </span>
