@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import productform
-from django.conf import settings
-import os
+from django.http import HttpResponse
+
 # Create your views here.
 
 def createproduct(request):
@@ -9,7 +9,10 @@ def createproduct(request):
         form = productform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('shop')
+            return redirect("shop")
+        else:
+            # If the form has errors, you might want to display them
+            print(form.errors) 
     return render(request,"create.html",context={"form":productform})
 
 
