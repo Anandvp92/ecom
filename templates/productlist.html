@@ -44,6 +44,8 @@
       <tr>
         <th class="tablehead">Product Id</th>
         <th class="tablehead">Title</th>
+        <th class="tablehead">DESCRIPTION</th>
+        <th class="tablehead">RATINGS</th>
         <th class="tablehead">Price</th>
         <th class="tablehead">PRODUCT CATEGORY</th>
         <th class="tablehead">PRODUCT IMAGE</th>
@@ -56,6 +58,8 @@
       <tr>
         <td class="td">{{product.id}}</td>        
         <td class="td">{{product.TITLE}}</td>
+        <td class="td">{{product.DESCRIPTION}}</td>
+        <td class="td">{{product.RATINGS}}</td>
         <td class="td">₹{{product.PRICE}}</td>
         <td class="td">{{product.PRODUCT_CATEGORY}}</td>
         <td class="td"><img src="{{ product.IMAGE.url }}"  alt="Product Image"  width="150px"></td>

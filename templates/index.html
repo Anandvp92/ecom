@@ -62,6 +62,8 @@
               </div>
               <div>
                 <a class="btn btn-primary btn-sm" href="#" role="button">Add-To-Cart</a>
+                <button type="button" class="btn btn-success btn-sm"><a style="color: white;" href="{%url 'edit' product.id %}">Edit </a></button>
+                <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
               </div>
               <!-- <div>
                 <button type="button" class="btn btn-success"><a style="color: white;" href="{%url 'edit' product.id %}">Edit </a></button>
@@ -76,7 +78,7 @@
                     <span class="star" data-value="4">&#9733;</span>
                     <span class="star" data-value="5">&#9733;</span>
                 </div>
-                <p>Current Rating: <span id="currentRating">0</span> stars</p>
+                <p>Current Rating: <span id="currentRating">{{product.RATINGS}}</span> stars</p>
             </div>
               <!-- end star -->
               <div class="new">

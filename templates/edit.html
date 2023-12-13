@@ -1,0 +1,53 @@
+
+{%extends 'base.html'%}
+
+{%block content%}
+
+
+    <div class="kgacontainer">
+
+        <div class="login">
+      
+          <h1>Update Product</h1>
+      
+          <form  method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="input-box">
+              {{form.TITLE}}
+              <i class="fa fa-tag"></i>
+            </div>
+      
+            <div class="input-box">
+                {{form.DESCRIPTION}} 
+                <i class="fa fa-info"></i>
+
+              </div>
+
+              <div class="input-box">
+                {{form.PRICE}}
+                <i class="fa fa-money"></i>
+              </div>
+
+              <div  class="input-box">
+                <label style="color: rgb(255, 255, 255);">Select Product Category : </label>
+             
+                    {{form.PRODUCT_CATEGORY }}
+              
+                <i class="fa fa-list-alt"></i>
+            </div>           
+              <div style="text-align: center; padding-bottom: 30px;">
+               <img src=" {{form.instance.IMAGE.url}}" style="width: auto;height: 200px;">
+              </div>
+           <div class="input-box">
+            <input type="file" name="IMAGE" accept="image/*" id="isd_IMAGE">
+
+            <i class="fa fa-image"></i>
+          </div>
+        <button type="submit">UPDATE</button>
+       
+      </form>
+  
+    </div><!-- End Login -->
+  
+  </div>
+{%endblock%}

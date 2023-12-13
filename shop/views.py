@@ -32,5 +32,12 @@ def deleteproduct(request,pk):
 
 
 def editproduct(request,pk):
-    
-    return render(request,"edit.html")
+    obj = productmodel.objects.get(id=pk)
+    if request.POST:
+        insc= productform(data=request.POST,files=request.FILES,instance=obj)
+        if insc.is_valid:
+            insc.save()
+            return redirect('shop')
+    else:
+        insc=productform(instance=obj)
+    return render(request,"edit.html",{"form":insc})
