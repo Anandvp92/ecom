@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import productform
 from django.http import HttpResponse
 from .models import productmodel
+import os
 
 # Create your views here.
 
@@ -22,9 +23,14 @@ def listproduct(request):
     return render(request,"productlist.html",{"products":products})
 
 
-def deleteproduct(request):
-    return render(request,"delete.html")
+def deleteproduct(request,pk):
+    isinstances= productmodel.objects.get(pk=pk)    
+    if isinstances.IMAGE:
+        os.remove(isinstances.IMAGE.path)   
+    isinstances.delete() 
+    return redirect("index")
 
 
-def editproduct(request):
+def editproduct(request,pk):
+    
     return render(request,"edit.html")

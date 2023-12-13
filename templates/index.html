@@ -57,10 +57,16 @@
                   <span><br>
                   ₹{{product.PRICE}}
                   </span>                  
-                </h6>
-            
+                </h6>     
+              
               </div>
-             
+              <div>
+                <a class="btn btn-primary btn-sm" href="#" role="button">Add-To-Cart</a>
+              </div>
+              <!-- <div>
+                <button type="button" class="btn btn-success"><a style="color: white;" href="{%url 'edit' product.id %}">Edit </a></button>
+                <button type="button"  class="btn btn-danger"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
+               </div> -->
                <!-- star -->
               <div class="container">
                 <div class="rating" data-rating="0">
@@ -77,9 +83,12 @@
                 <span>
                   New
                 </span>
+                
               </div>
             </a>
+          
           </div>
+         
         </div>
         
         {%endfor%}

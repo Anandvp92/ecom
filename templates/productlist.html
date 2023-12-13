@@ -1,4 +1,4 @@
-{%extends 'footer.html'%}
+{%extends 'base.html'%}
 {%block content%}
 <style>
 .body{
@@ -61,10 +61,11 @@
         <td class="td"><img src="{{ product.IMAGE.url }}"  alt="Product Image"  width="150px"></td>
 
         <td class="td">
-          <button class="button" >Edit</button>
+          <button type="button" class="btn btn-success btn-sm"><a style="color: white;" href="{%url 'edit' product.id %}">Edit </a></button>
         </td>
         <td class="td">
-          <button class="button">Delete</button>
+        
+          <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
         </td>
       </tr>
       {%endfor%}
