@@ -34,11 +34,12 @@
                     {{ form.PRODUCT_CATEGORY }}
                 </section>
                 <i class="fa fa-list-alt"></i>
-            </div>     
+            </div>
+              <img id="preview" src="#" alt="Image Preview" style="display: none;"> 
               <div class="input-box">
                 {{form.IMAGE}}
-
                 <i class="fa fa-image"></i>
+                
               </div>
             <button type="submit">CREATE</button>
            
@@ -47,4 +48,22 @@
         </div><!-- End Login -->
       
       </div>
+
+      <script>
+        function previewImage(event) {
+            var preview = document.getElementById('preview');
+            preview.style.display = 'block';
+            preview.style.maxWidth='150px';
+            preview.style.maxHeight='auto'; 
+            preview.style.textAlign='center';  
+            preview.style.marginLeft='auto';
+            preview.style.marginRight='auto'; 
+            preview.style.paddingBottom='5px';   
+            preview.style.paddingTop='5px';   
+            preview.src = URL.createObjectURL(event.target.files[0]);
+            console.log(preview.src)
+        }
+
+        document.getElementById('id_IMAGE').addEventListener('change', previewImage);
+    </script>
 {%endblock%}

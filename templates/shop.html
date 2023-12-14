@@ -36,11 +36,16 @@
         
                 
               </div>
-              <div>
-                <a class="btn btn-primary btn-sm" href="#" role="button">Add-To-Cart</a>
-                <button type="button" class="btn btn-success btn-sm"><a style="color: white;" href="{%url 'edit' product.id %}">Edit </a></button>
-                <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
-               </div>
+              <div id="adddeleteupdate" style="text-align: center;" >
+                <div style="padding-top: 5px; padding-bottom:5px">
+                  <button type="button" class="btn btn-primary btn-sm"><a style="color: rgb(253, 253, 253);" href="{%url 'edit' product.id %}">ADD-TO-CART </a></button>
+                </div>
+                  <button type="button" class="btn btn-success btn-sm"><a style="color: rgb(255, 255, 255);" href="{%url 'edit' product.id %}">Edit </a></button>
+                  <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
+        <div>
+          <span id="hhe">hello</span>
+        </div>
+                 </div>
                <!-- star -->
               <div class="container">
                 <div class="rating" data-rating="0">
@@ -70,6 +75,8 @@
       </div>
     </div>
   </section>
-
+<script>
+  
+</script>
   <!-- end shop section -->
 {%endblock%}

@@ -55,16 +55,20 @@
                 <h6 ><br>
                   Price
                   <span><br>
-                  ₹{{product.PRICE}}
+                   ₹{{product.PRICE}}
                   </span>                  
-                </h6>     
+                </h6>
+            
+      
               
+            </div>
+            <div id="adddeleteupdate" style="text-align: center;" >
+              <div style="padding-top: 5px; padding-bottom:5px">
+                <button type="button" class="btn btn-primary btn-sm"><a style="color: rgb(253, 253, 253);" href="#" onclick="starsss()">ADD-TO-CART </a></button>
               </div>
-              <div>
-                <a class="btn btn-primary btn-sm" href="#" role="button">Add-To-Cart</a>
-                <button type="button" class="btn btn-success btn-sm"><a style="color: white;" href="{%url 'edit' product.id %}">Edit </a></button>
+                <button type="button" class="btn btn-success btn-sm"><a style="color: rgb(255, 255, 255);" href="{%url 'edit' product.id %}">Edit </a></button>
                 <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
-              </div>
+      </div>
               <!-- <div>
                 <button type="button" class="btn btn-success"><a style="color: white;" href="{%url 'edit' product.id %}">Edit </a></button>
                 <button type="button"  class="btn btn-danger"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
@@ -255,6 +259,14 @@
 
   <!-- end client section -->
 
+<script>
+  // Get all the star elements
+function starsss(){
+  let a=document.querySelectorAll('.star');
+  a.forEach(a=> console.log(a))
+  
+};
 
+</script>
 
   {%endblock%}
