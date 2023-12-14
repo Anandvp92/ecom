@@ -42,9 +42,7 @@
                 </div>
                   <button type="button" class="btn btn-success btn-sm"><a style="color: rgb(255, 255, 255);" href="{%url 'edit' product.id %}">Edit </a></button>
                   <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
-        <div>
-          <span id="hhe">hello</span>
-        </div>
+      
                  </div>
                <!-- star -->
               <div class="container">
@@ -76,7 +74,11 @@
     </div>
   </section>
 <script>
-  
+let i = document.querySelectorAll('.star')
+
+
+i.forEach(i => i.classList.add('active'))
+
 </script>
   <!-- end shop section -->
 {%endblock%}

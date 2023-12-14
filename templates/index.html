@@ -64,7 +64,7 @@
             </div>
             <div id="adddeleteupdate" style="text-align: center;" >
               <div style="padding-top: 5px; padding-bottom:5px">
-                <button type="button" class="btn btn-primary btn-sm"><a style="color: rgb(253, 253, 253);" href="#" onclick="starsss()">ADD-TO-CART </a></button>
+                <button id="but" type="button" class="btn btn-primary btn-sm"><a style="color: rgb(253, 253, 253);" href="#">ADD-TO-CART </a></button>
               </div>
                 <button type="button" class="btn btn-success btn-sm"><a style="color: rgb(255, 255, 255);" href="{%url 'edit' product.id %}">Edit </a></button>
                 <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
@@ -260,12 +260,33 @@
   <!-- end client section -->
 
 <script>
-  // Get all the star elements
-function starsss(){
-  let a=document.querySelectorAll('.star');
-  a.forEach(a=> console.log(a))
-  
-};
+// Get all the star elements
+const stars = document.querySelectorAll('.star');
+
+// Loop through each star and add a click event listener
+stars.forEach(star => {
+    star.addEventListener('click', function() {
+        const value = parseInt(this.getAttribute('data-value'));
+        const ratingContainer = this.parentElement;
+        const currentRating = document.getElementById('currentRating');
+
+        // Update the data-rating attribute
+        ratingContainer.setAttribute('data-rating', value);
+
+        // Update the displayed rating
+        currentRating.textContent = value ;
+
+        // Update the visual state of the stars based on the clicked star
+        stars.forEach(s => {
+            if (parseInt(s.getAttribute('data-value')) <= value) {
+                s.classList.add('active');
+            } else {
+                s.classList.remove('active');
+            }
+        });
+    });
+});
+
 
 </script>
 
