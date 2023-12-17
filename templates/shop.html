@@ -4,6 +4,7 @@
 {%block title%}Products{%endblock%}
 {%block content %}
 
+{%csrf_token%}
   <!-- shop section -->
 
   <section class="shop_section layout_padding">
@@ -32,8 +33,8 @@
                      ₹{{product.PRICE}}
                     </span>                  
                   </h6>
-              
-        
+    
+        <p  id="pro" style="display: none;">{{product.id}}</p>
                 
               </div>
               <div id="adddeleteupdate" style="text-align: center;" >
@@ -49,11 +50,13 @@
                 <div class="rating" data-rating="0">
                     <span class="star" data-value="1">&#9733;</span>
                     <span class="star" data-value="2">&#9733;</span>
-                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>  
                     <span class="star" data-value="4">&#9733;</span>
                     <span class="star" data-value="5">&#9733;</span>
                 </div>
                 <p>Current Rating: <span id="currentRating">{{product.RATINGS}}</span> stars</p>
+            
+            
             </div>
               <!-- end star -->
               <div class="new">
@@ -73,12 +76,77 @@
       </div>
     </div>
   </section>
-<script>
-let i = document.querySelectorAll('.star')
 
-
-i.forEach(i => i.classList.add('active'))
-
-</script>
   <!-- end shop section -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+
+ const starss = document.querySelectorAll('.star');
+ const ratings = document.getElementById("currentRating").textContent;
+ starss.forEach((star,index)=>{
+  if( index< parseInt(ratings)){
+    console.log(index);
+    console.log(ratings)
+    star.classList.add('active');
+  }
+ 
+ });
+
+
+
+
+    function token() {
+        const hiddenInputs = document.getElementsByName('csrfmiddlewaretoken');
+        const firstHiddenInput = hiddenInputs[0];
+        return firstHiddenInput.value;
+    }
+
+    let stars = document.querySelectorAll('.star');
+    let rating = 0;
+
+    stars.forEach((s, i) => {
+        s.addEventListener('click', function() {
+            rating = i + 1;
+            stars.forEach((star, index) => {
+                if (index <= i) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+            document.getElementById('currentRating').innerHTML = rating;
+            const productId = document.getElementById('pro').textContent;
+            // Trigger AJAX request when a rating is clicked
+            sendRatingToBackend(rating,productId);
+        });
+    });
+
+    function sendRatingToBackend(rating,productId) {
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'submit_rating' %}",
+            headers: {
+                'X-CSRFToken': token()
+            },
+            data: { 'rating': rating,
+            'productid':productId  },
+
+            success: function(response) {
+                console.log('Rating submitted successfully:', response);
+                // Handle success response if needed
+            },
+            error: function(error) {
+                console.error('Error:', error);
+                // Handle error if needed
+            }
+        });
+    }
+</script>
+
+
+
 {%endblock%}

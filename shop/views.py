@@ -41,3 +41,16 @@ def editproduct(request,pk):
     else:
         insc=productform(instance=obj)
     return render(request,"edit.html",{"form":insc})
+
+
+
+
+def submit_rating(request):
+    if request.POST:
+     product_id = request.POST.get('productid')
+     rating=request.POST.get('rating')
+     if product_id:
+        obj=productmodel.objects.get(id=product_id)
+        obj.RATINGS=rating
+        obj.save()
+    return render(request,'shop.html')
