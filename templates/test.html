@@ -1,0 +1,39 @@
+<p type="hidden" id="token">{% csrf_token %}</p>
+
+<h1 id="he">Hello from frontend</h1>
+
+{% for i in products %}
+<div class="container">
+
+<button id="sendToBackend" onclick="performpost('{{i.id}}','{{i.TITLE}}')">Send to Backend</button>
+
+</div>
+
+
+
+
+{%endfor%}
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script>
+
+function performpost(productid,title){
+    const csrfInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
+    Backend(productid,title,csrfInput.value); 
+}
+
+function Backend(a,b,csrfToken){
+    $.ajax({
+        type: "POST",
+        url: "{% url 'test' %}",
+        headers: {
+            "X-CSRFToken": csrfToken,
+        },
+        data: { 'value': a,
+                'title':b},
+    });
+
+
+}
+
+</script>

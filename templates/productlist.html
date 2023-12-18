@@ -10,6 +10,9 @@
     width: 80%; 
     margin: 20px auto;
     padding-bottom: 400px;
+    padding-left: auto;
+    padding-right: auto;
+    display: inline;
 }
 .head{
     text-align: center;
@@ -23,7 +26,7 @@
 }
 .td{
     border: 1px solid #ddd;
-     padding: 8px;
+     padding: 18px;
 }
 .button{
     padding: 6px 12px; 
@@ -37,6 +40,7 @@
 
 </style>
 <body class="body">
+  {%csrf_token%}
 <div class="div">
   <h2 class="head" >Product List</h2>
   <table style="width: 100%; border-collapse: collapse; text-align: center;">
@@ -51,6 +55,7 @@
         <th class="tablehead">PRODUCT IMAGE</th>
         <th class="tablehead">Edit</th>
         <th class="tablehead">Delete</th>
+        <th class="tablehead">Rate</th>
       </tr>
     </thead>
     <tbody>
@@ -59,7 +64,7 @@
         <td class="td">{{product.id}}</td>        
         <td class="td">{{product.TITLE}}</td>
         <td class="td">{{product.DESCRIPTION}}</td>
-        <td class="td">{{product.RATINGS}}</td>
+        <td class="td" id="rating-{{product.id}}">{{product.RATINGS}}</td>
         <td class="td">₹{{product.PRICE}}</td>
         <td class="td">{{product.PRODUCT_CATEGORY}}</td>
         <td class="td"><img src="{{ product.IMAGE.url }}"  alt="Product Image"  width="150px"></td>
@@ -71,11 +76,76 @@
         
           <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
         </td>
+
+        <td class="td">
+          <div class="container">
+            <div class="rating ratings-{{product.id}}" data-rating="0">
+                <span class="star star-{{prodct.id}}"  onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="1">&#9733;</span>
+                <span class="star star-{{prodct.id}}"  onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="2">&#9733;</span>
+                <span class="star star-{{prodct.id}}"  onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="3">&#9733;</span>
+                <span class="star star-{{prodct.id}}"  onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="4">&#9733;</span>
+                <span class="star star-{{prodct.id}}"  onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="5">&#9733;</span>
+            </div>
+        </td>
       </tr>
       {%endfor%}
       <!-- Add more rows as needed -->
     </tbody>
   </table>
 </div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script>
+
+
+
+
+const stars = document.querySelectorAll('.star-' + productId);
+
+stars.forEach((star, index) => {
+    if (index < productRating) {
+        star.classList.add('active');
+    } else {
+        star.classList.remove('active');
+    }
+});
+
+
+
+
+function testfun(productid,datavalue){
+    const csrfInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
+    let i = document.getElementById('rating-'+productid);   
+    i.innerHTML=datavalue;
+    Backend(productid,datavalue,csrfInput.value);
+    
+}
+
+
+
+
+function Backend(productid,datavalue,csrfToken){
+    $.ajax({
+        type: "POST",
+        url: "{% url 'test' %}",
+        headers: {
+            "X-CSRFToken": csrfToken,
+        },
+        data: { 'value': productid,
+                'rating': datavalue,                  
+      },
+    });
+
+
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+ console.log('{{product.id}}')
+});
+</script>
+
 
 {%endblock%}

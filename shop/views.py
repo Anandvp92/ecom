@@ -3,7 +3,7 @@ from .forms import productform
 from django.http import HttpResponse
 from .models import productmodel
 import os
-
+from django.http import JsonResponse
 # Create your views here.
 
 def createproduct(request):
@@ -21,6 +21,29 @@ def createproduct(request):
 def listproduct(request):
     products= productmodel.objects.all()
     return render(request,"productlist.html",{"products":products})
+
+
+
+
+
+
+def testfun(request):    
+    if request.POST: 
+        pk=request.POST['value']
+        rating=request.POST['rating']
+        obj=productmodel.objects.get(id=pk)  
+        obj.RATINGS=rating
+        obj.save()
+    return HttpResponse("Done")
+
+
+
+
+
+
+
+
+
 
 
 def deleteproduct(request,pk):
