@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{%block title%}Home{%endblock%}
 
+{%block title%}Home{%endblock%}
 {%block content %}
 {%load static%}
   <!-- slider section -->
@@ -31,79 +31,85 @@
   </section>
   <!-- end slider section -->
 
-  <!-- shop section -->
-
-  <section class="shop_section layout_padding">
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>
-        Products
-        </h2>
-      </div>
-      <div class="row">
-        {%for product in products%}
-        <div class="col-sm-6 col-md-4 col-lg-3">    
-            <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src= "{{product.IMAGE.url}}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  {{product.TITLE}}
-                </h6>
+  <!-- product section -->
+  
+  
+<section class="shop_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>
+     Products
+      </h2>
+    </div>
+    <div class="row">
+      {%for product in products%}
+      <div class="col-sm-6 col-md-4 col-lg-3">    
+          <div class="box">
+          <a href="">
+            <div class="img-box">
+              <img src= "{{product.IMAGE.url}}" alt="">
+            </div>
+            <div class="detail-box">
+              <h6>
+                {{product.TITLE}}
+              </h6>
+            
                 <h6 ><br>
                   Price
                   <span><br>
-                   ₹{{product.PRICE}}
+                  ₹{{product.PRICE}}
                   </span>                  
                 </h6>
-            
-      
+   
               
             </div>
             <div id="adddeleteupdate" style="text-align: center;" >
               <div style="padding-top: 5px; padding-bottom:5px">
-                <button id="but" type="button" class="btn btn-primary btn-sm"><a style="color: rgb(253, 253, 253);" href="#">ADD-TO-CART </a></button>
+               {%csrf_token%}
+                <button type="button" class="btn btn-primary btn-sm"><a style="color: rgb(253, 253, 253);" href="{%url 'edit' product.id %}">ADD-TO-CART </a></button>
               </div>
-                <button type="button" class="btn btn-success btn-sm"><a style="color: rgb(255, 255, 255);" href="{%url 'edit' product.id %}">Edit </a></button>
-                <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
-      </div>
-              <!-- <div>
-                <button type="button" class="btn btn-success"><a style="color: white;" href="{%url 'edit' product.id %}">Edit </a></button>
-                <button type="button"  class="btn btn-danger"><a style="color: white;"  href="{%url 'delete' product.id %}">Delete</a></button>
-               </div> -->
-               <!-- star -->
-            
-                <p>Current Rating: <span id="currentRating">{{product.RATINGS}}</span> stars</p>
-            </div>
-              <!-- end star -->
-              <div class="new">
-                <span>
-                  New
-                </span>
-                
+                <button type="button" class="btn btn-success btn-sm"><a style="color: rgb(255, 255, 255);" href="{%url 'edit' product.id %}">UPDATE</a></button>
+                <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">DELETE</a></button>
+    
               </div>
-            </a>
+            <!-- star -->
+            <div class="container">
+              
+               <div class="rating" data-rating="0">   
+                 {% if product.RATINGS %}
+                   {% for i in "x"|ljust:"5" %}
+                   {% if forloop.counter <= product.RATINGS %}
+                   <span class="star active star-{{product.id}}" onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="{{ forloop.counter }}">&#9733;</span>
+                   {% else %}
+                   <span class="star-{{product.id}}" onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="{{ forloop.counter }}">&#9733;</span>
+                   {% endif %}
+                   {%endfor%}
+                   {%endif%}
+               </div>
+              <p>Current Rating: <span id="rating-{{product.id}}">{{product.RATINGS}}</span> stars</p>
+          
           
           </div>
-         
+            <!-- end star -->
+            <div class="new">
+              <span>
+                New
+              </span>
+            </div>
+          </a>
         </div>
-        
-        {%endfor%}
       </div>
-      <div class="btn-box">
-        <a href="">
-          View More
-        </a>
-      </div>
+      
+      {%endfor%}
+    <div class="btn-box">
+      <a href="">
+        View All Products
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- end shop section -->
-
-  
-  <!-- offer section -->
+  <!-- product section end -->
 
   <section class="offer_section layout_padding">
     <div class="container-fluid">
@@ -149,10 +155,6 @@
     </div>
   </section>
 
-  <!-- end offer section -->
-
- 
-  <!-- client section -->
 
   <section class="client_section layout_padding">
     <div class="container">
@@ -251,36 +253,5 @@
   </section>
 
   <!-- end client section -->
-
-<script>
-// Get all the star elements
-const stars = document.querySelectorAll('.star');
-
-// Loop through each star and add a click event listener
-stars.forEach(star => {
-    star.addEventListener('click', function() {
-        const value = parseInt(this.getAttribute('data-value'));
-        const ratingContainer = this.parentElement;
-        const currentRating = document.getElementById('currentRating');
-
-        // Update the data-rating attribute
-        ratingContainer.setAttribute('data-rating', value);
-
-        // Update the displayed rating
-        currentRating.textContent = value ;
-
-        // Update the visual state of the stars based on the clicked star
-        stars.forEach(s => {
-            if (parseInt(s.getAttribute('data-value')) <= value) {
-                s.classList.add('active');
-            } else {
-                s.classList.remove('active');
-            }
-        });
-    });
-});
-
-
-</script>
 
   {%endblock%}

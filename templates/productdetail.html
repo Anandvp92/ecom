@@ -1,0 +1,135 @@
+
+{%load static%}
+<!-- shop section -->
+
+
+<section class="shop_section layout_padding">
+   <div class="container">
+     <div class="heading_container heading_center">
+       <h2>
+      Products
+       </h2>
+     </div>
+     <div class="row">
+       {%for product in products%}
+       <div class="col-sm-6 col-md-4 col-lg-3">    
+           <div class="box">
+           <a href="">
+             <div class="img-box">
+               <img src= "{{product.IMAGE.url}}" alt="">
+             </div>
+             <div class="detail-box">
+               <h6>
+                 {{product.TITLE}}
+               </h6>
+             
+                 <h6 ><br>
+                   Price
+                   <span><br>
+                   ₹{{product.PRICE}}
+                   </span>                  
+                 </h6>
+    
+               
+             </div>
+             <div id="adddeleteupdate" style="text-align: center;" >
+               <div style="padding-top: 5px; padding-bottom:5px">
+                {%csrf_token%}
+                 <button type="button" class="btn btn-primary btn-sm"><a style="color: rgb(253, 253, 253);" href="{%url 'edit' product.id %}">ADD-TO-CART </a></button>
+               </div>
+                 <button type="button" class="btn btn-success btn-sm"><a style="color: rgb(255, 255, 255);" href="{%url 'edit' product.id %}">UPDATE</a></button>
+                 <button type="button"  class="btn btn-danger btn-sm"><a style="color: white;"  href="{%url 'delete' product.id %}">DELETE</a></button>
+     
+               </div>
+             <!-- star -->
+             <div class="container">
+               
+                <div class="rating" data-rating="0">   
+                  {% if product.RATINGS %}
+                    {% for i in "x"|ljust:"5" %}
+                    {% if forloop.counter <= product.RATINGS %}
+                    <span class="star active star-{{product.id}}" onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="{{ forloop.counter }}">&#9733;</span>
+                    {% else %}
+                    <span class="star star-{{product.id}}" onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="{{ forloop.counter }}">&#9733;</span>
+                    {% endif %}
+                    {%endfor%}
+                    {%endif%}
+                </div>
+               <p>Current Rating: <span id="rating-{{product.id}}">{{product.RATINGS}}</span> stars</p>
+           
+           
+           </div>
+             <!-- end star -->
+             <div class="new">
+               <span>
+                 New
+               </span>
+             </div>
+           </a>
+         </div>
+       </div>
+       
+       {%endfor%}
+     <div class="btn-box">
+       <a href="">
+         View All Products
+       </a>
+     </div>
+   </div>
+ </section>
+
+ <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+ <script>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ function updatestar(productid,datavalue){
+   const stars = document.querySelectorAll('.star-'+productid);
+     stars.forEach((star, index) => {
+       if (index < datavalue) {
+         star.classList.add('active');
+     } else {
+         star.classList.remove('active');
+     }
+     });
+ }
+ 
+ 
+ function testfun(productid,datavalue){
+     const csrfInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
+     let i = document.getElementById('rating-'+productid);   
+     i.innerHTML=datavalue;
+     Backend(productid,datavalue,csrfInput.value);
+     updatestar(productid,datavalue);
+     
+ }
+ 
+
+ 
+ 
+ function Backend(productid,datavalue,csrfToken){
+     $.ajax({
+         type: "POST",
+         url: "{% url 'test' %}",
+         headers: {
+             "X-CSRFToken": csrfToken,
+         },
+         data: { 'value': productid,
+                 'rating': datavalue,                  
+       },
+     });
+ 
+ 
+ }
+ 
+ 
+ </script>
+ 
+ <!-- end shop section -->
+
