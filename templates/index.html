@@ -75,18 +75,18 @@
             <!-- star -->
             <div class="container">
               
-               <div class="rating" data-rating="0">   
+               <div class="rating" data-rating="0" style="text-align: center;">   
                  {% if product.RATINGS %}
                    {% for i in "x"|ljust:"5" %}
                    {% if forloop.counter <= product.RATINGS %}
-                   <span class="star active star-{{product.id}}" onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="{{ forloop.counter }}">&#9733;</span>
+                   <span class="star  active star-{{product.id}}" data-value="{{ forloop.counter }}">&#9733;</span>
                    {% else %}
-                   <span class="star-{{product.id}}" onclick="testfun('{{product.id}}',this.getAttribute('data-value'))" data-value="{{ forloop.counter }}">&#9733;</span>
+                   <span class="normalstar star-{{product.id}}" data-value="{{ forloop.counter }}">&#9733;</span>
                    {% endif %}
                    {%endfor%}
                    {%endif%}
                </div>
-              <p>Current Rating: <span id="rating-{{product.id}}">{{product.RATINGS}}</span> stars</p>
+              <p style="text-align: center;">Rating: <span id="rating-{{product.id}}">{{product.RATINGS}}</span> stars</p>
           
           
           </div>

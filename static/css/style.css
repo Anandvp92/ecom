@@ -3,8 +3,8 @@
 @import url("../fonts/octin_sports_rg.ttf");
 body {
   font-family: "Poppins", sans-serif;
-  color: #0c0c0c;
-  background-color: #ffffff;
+  color: #020202;
+  background-color: #fffdfd;
   overflow-x: hidden;
 }
 
@@ -972,6 +972,15 @@ a:focus {
 .rating {
   font-size: 0; /* Remove white space between inline-block elements */
 }
+
+.normalstar {
+  display: inline-block;
+  font-size: 30px; /* Size of the stars */
+  color: #ccc; /* Default color of the stars */
+
+}
+
+
 .star {
   display: inline-block;
   font-size: 30px; /* Size of the stars */
@@ -979,6 +988,7 @@ a:focus {
   color: #ccc; /* Default color of the stars */
   transition: transform 0.2s ease-in-out; /* Transition for hover effect */
 }
+
 .star:hover,
 .star.active {
   color: gold; /* Color of the active (selected) stars */

@@ -44,7 +44,7 @@
              <!-- star -->
              <div class="container">
                
-                <div class="rating" data-rating="0">   
+                <div class="rating" data-rating="0" style="text-align: center;">   
                   {% if product.RATINGS %}
                     {% for i in "x"|ljust:"5" %}
                     {% if forloop.counter <= product.RATINGS %}
@@ -55,7 +55,7 @@
                     {%endfor%}
                     {%endif%}
                 </div>
-               <p>Current Rating: <span id="rating-{{product.id}}">{{product.RATINGS}}</span> stars</p>
+               <p style="text-align: center;">Current Rating: <span id="rating-{{product.id}}">{{product.RATINGS}}</span> stars</p>
            
            
            </div>
