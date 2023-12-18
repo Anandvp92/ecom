@@ -9,7 +9,6 @@
   <table class="tablestyle">
     <thead>
       <tr>
-        <th class="tablehead">Product Id</th>
         <th class="tablehead">Title</th>
         <th class="tablehead">DESCRIPTION</th>
         <th class="tablehead">RATINGS</th>
@@ -23,8 +22,7 @@
     </thead>
     <tbody>
         {%for product in products%}
-      <tr>
-        <td class="td">{{product.id}}</td>        
+      <tr>      
         <td class="td">{{product.TITLE}}</td>
         <td class="td">{{product.DESCRIPTION}}</td>
         <td class="td" id="rating-{{product.id}}">{{product.RATINGS}}</td>
