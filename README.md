@@ -24,4 +24,4 @@ Welcome to the Django E-commerce project! This project is designed for creating 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-ecommerce-project.git
+   git clone https://github.com/Anandvp92/ecom.git
