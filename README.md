@@ -16,8 +16,10 @@ Welcome to the Django E-commerce project! This project is designed for creating 
 
 - Python 3.x
 - Django (latest version)
-- [Django Two-Factor Authentication](https://django-otp-official.readthedocs.io/en/stable/)
 - jQuery (included in project)
+- Bootstrap 5 (included in project)
+- Ajax (included in project)
+- Axios (included in project)
 
 ## Installation
 
